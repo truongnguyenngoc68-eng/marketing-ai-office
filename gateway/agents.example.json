@@ -1,0 +1,10 @@
+{
+  "agents": [
+    {
+      "id": "my-agent",
+      "name": "Agent của tôi",
+      "endpoint": "https://your-agent.example.com/tram-task",
+      "tokenEnv": "MY_AGENT_TOKEN"
+    }
+  ]
+}

@@ -1,3 +1,7 @@
 research/
 read_sources.py
 inspect_assets.py
+
+gateway/agents.local.json
+.env
+.env.*
