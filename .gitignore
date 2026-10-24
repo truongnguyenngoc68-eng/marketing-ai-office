@@ -5,3 +5,11 @@ inspect_assets.py
 gateway/agents.local.json
 .env
 .env.*
+
+.tram-data/
+
+.tram-test-data/
+
+.openai/
+node_modules/
+*.log

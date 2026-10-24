@@ -1,0 +1,37 @@
+/* Desk workers stay grounded; movement belongs to the walking handoff. */
+.actor img,.actor.busy img{animation:none!important;transform:none!important}
+.actor.walking-away>img,.actor.walking-away>.accessory{visibility:hidden!important}
+.actor.walking-away .nameplate{opacity:.64}
+.actor.receiving-handoff .nameplate{outline:2px solid #a4d7ba;box-shadow:0 0 0 5px #c5eddb55}
+#courier{display:none!important}
+.phi-walker{position:absolute;width:8%;aspect-ratio:1;transform:translate(-50%,-94%);pointer-events:none;isolation:isolate;--walk-facing:1;--identity-color:#a8cbe7}
+.phi-walker[hidden]{display:none!important}
+.walk-facing{position:absolute;inset:0;transform:scaleX(var(--walk-facing));transform-origin:50% 88%}
+.walk-rig{display:block;width:100%;height:100%;overflow:visible;filter:saturate(.78);position:relative;z-index:2}
+.walk-shadow{position:absolute;width:40%;height:7%;left:30%;bottom:3%;border-radius:50%;background:#769ab1;opacity:.24;filter:blur(2px);transform:scaleX(1.1)}
+.walk-identity{position:absolute;z-index:5;left:50%;top:0;transform:translate(-50%,-65%);white-space:nowrap;font-size:clamp(6px,.65cqw,10px);font-weight:700;color:#4c7190;background:#fffef7ed;border:1px solid var(--identity-color);border-radius:20px;padding:4px 7px;box-shadow:0 2px 5px #8ba8bb22}
+.walk-caption{position:absolute;left:50%;bottom:-8%;transform:translateX(-50%);white-space:nowrap;font-size:clamp(6px,.6cqw,9px);color:#7f9cb0;background:#f9fcffe8;padding:3px 6px;border-radius:5px}
+.walk-leg{transform-box:view-box;animation:phi-foot-left .42s ease-in-out infinite}
+.walk-leg-left{transform-origin:550px 1020px}
+.walk-leg-right{transform-origin:735px 1020px;animation-name:phi-foot-right}
+.walk-upper{transform-box:view-box;transform-origin:640px 1000px;animation:phi-walk-weight .42s ease-in-out infinite}
+.walk-arm{transform-box:view-box;animation:phi-arm-left .42s ease-in-out infinite}
+.walk-arm-left{transform-origin:550px 795px}
+.walk-arm-right{transform-origin:800px 880px;animation-name:phi-arm-right}
+.walk-folder{position:absolute;left:60%;top:62%;width:27%;height:23%;border-radius:3px 5px 5px 3px;background:#f3d7a2;border:1px solid #d5ba89;transform:rotate(-8deg);box-shadow:0 2px 3px #52778825;z-index:4;animation:phi-folder-carry .42s ease-in-out infinite}
+.walk-folder:before{content:'';position:absolute;top:-15%;left:-1px;width:48%;height:22%;background:#efd19a;border:1px solid #d5ba89;border-bottom:0;border-radius:3px 3px 0 0}
+.walk-folder>span{position:absolute;inset:19% 14% 17%;background:#fffdf4;border-radius:1px;border-top:2px solid #d2e4ea;box-shadow:0 3px 0 #fffdf4}
+.walk-folder>i{position:absolute;left:24%;right:24%;top:40%;height:1px;background:#c3d5df;box-shadow:0 4px 0 #c3d5df}
+.phi-walker.is-delivering .walk-leg,.phi-walker.is-delivering .walk-arm,.phi-walker.is-delivering .walk-upper{animation:none;transform:none}
+.phi-walker.is-delivering .walk-folder{animation:phi-folder-give .65s ease-in-out both}
+.phi-walker.is-returning .walk-folder{display:none}
+.phi-walker.is-paused *,.no-motion .phi-walker *{animation-play-state:paused!important}
+@keyframes phi-foot-left{0%,100%{transform:rotate(-12deg) translateY(-7px)}50%{transform:rotate(12deg) translateY(4px)}}
+@keyframes phi-foot-right{0%,100%{transform:rotate(12deg) translateY(4px)}50%{transform:rotate(-12deg) translateY(-7px)}}
+@keyframes phi-arm-left{0%,100%{transform:rotate(7deg)}50%{transform:rotate(-8deg)}}
+@keyframes phi-arm-right{0%,100%{transform:rotate(-6deg)}50%{transform:rotate(7deg)}}
+@keyframes phi-walk-weight{0%,100%{transform:rotate(-1deg)}50%{transform:rotate(1deg)}}
+@keyframes phi-folder-carry{0%,100%{transform:rotate(-7deg)}50%{transform:rotate(-11deg)}}
+@keyframes phi-folder-give{0%,25%{transform:translateX(0) rotate(-8deg);opacity:1}75%{transform:translateX(55%) rotate(0);opacity:1}100%{transform:translateX(65%) rotate(0);opacity:0}}
+@media(max-width:700px){.phi-walker{width:10%}.walk-identity{font-size:6px;padding:2px 4px}.walk-caption{font-size:5px;padding:2px 4px}}
+@media(prefers-reduced-motion:reduce){.phi-walker{display:none!important}.actor img{animation:none!important}}
